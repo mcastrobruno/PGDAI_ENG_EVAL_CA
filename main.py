@@ -2,6 +2,8 @@ from preprocess import *
 from embeddings import *
 from modelling.modelling import *
 from modelling.data_model import *
+from get_chained_variable import *
+from set_dependent_variable import *
 import random
 
 seed = 0
