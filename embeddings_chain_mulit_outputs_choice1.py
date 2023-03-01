@@ -18,6 +18,7 @@ np.random.seed(seed)
 def get_tfidf_embd_type2(df:pd.DataFrame):
     from sklearn.feature_extraction.text import TfidfVectorizer
     tfidfconverter = TfidfVectorizer(max_features=2000, min_df=4, max_df=0.90)
+    data = 0
     #data = df[Config.TICKET_SUMMARY] + ' ' + df[Config.INTERACTION_CONTENT]
     data = df['Type 2']
     X = tfidfconverter.fit_transform(data).toarray()
@@ -27,7 +28,12 @@ def get_tfidf_embd_type2_3(df:pd.DataFrame):
     from sklearn.feature_extraction.text import TfidfVectorizer
     tfidfconverter = TfidfVectorizer(max_features=2000, min_df=4, max_df=0.90)
     #data = df[Config.TICKET_SUMMARY] + ' ' + df[Config.INTERACTION_CONTENT]
-    data = df['Type 2'] + df['Type 3'] 
+    data = 0
+    for t2 in range(len(df)):
+      if df['Type 2'].iloc[t2] == df['y2'].iloc[t2]:
+        data += df['Type 2'].iloc[t2] + df['Type 3'].iloc[t2] 
+      elif df['Type 2'].iloc[t2] != df['y2'].iloc[t2]:
+        data += null
     X = tfidfconverter.fit_transform(data).toarray()
     return X
 
@@ -35,7 +41,12 @@ def get_tfidf_embd_type2_3_4(df:pd.DataFrame):
     from sklearn.feature_extraction.text import TfidfVectorizer
     tfidfconverter = TfidfVectorizer(max_features=2000, min_df=4, max_df=0.90)
     #data = df[Config.TICKET_SUMMARY] + ' ' + df[Config.INTERACTION_CONTENT]
-    data = df['Type 2'] + df['Type 3'] + df['Type 4']
+    data = 0
+    for t2 in range(len(df)):
+      if df['Type 2'].iloc[t2] == df['y2'].iloc[t2]:
+        data += df['Type 2'].iloc[t2] + df['Type 3'].iloc[t2] + df['Type 4'].iloc[t2] 
+      elif df['Type 2'].iloc[t2] != df['y2'].iloc[t2]:
+        data += null
     X = tfidfconverter.fit_transform(data).toarray()
     return X
 
