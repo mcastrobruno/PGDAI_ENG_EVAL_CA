@@ -31,22 +31,16 @@ def get_embeddings(df: pd.DataFrame):
 def get_data_object(X: np.ndarray, df: pd.DataFrame):
     return Data(X, df)
 
-
 def perform_modelling(data: Data, df: pd.DataFrame, name):
     model_predict(data, df, name)
 
-def get_chained_variable(df:pd.DataFrame):
-    chain_1 = group_df["y2"]
-    chain_2 = group_df["y2"] + group_df["y3"]
-    chain_3 = group_df["y2"] + group_df["y3"] + group_df["y4"]
-    chained_variables = [chain_1, chain_2, chain_3]
-    return chained_variables
 
 if __name__ == '__main__':
     df = load_data()
     df = preprocess_data(df)
     df[Config.INTERACTION_CONTENT] = df[Config.INTERACTION_CONTENT].values.astype('U')
     df[Config.TICKET_SUMMARY] = df[Config.TICKET_SUMMARY].values.astype('U')
+
     grouped_df = df.groupby(Config.GROUPED)
 
     for name, group_df in grouped_df:

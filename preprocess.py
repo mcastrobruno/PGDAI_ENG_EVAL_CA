@@ -225,4 +225,5 @@ def translate_to_en(texts:list[str]):
             text_en_l = text_en_l + [text_en]
             #print(text)
             #print(text_en)
+
     return text_en_l
